@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load blog_tags %}
+
+{% block content%}
+ <style>
+   body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+  </style>
+
+
+ <!-- Page Content -->
+<div class="container">
+   <!-- Jumbotron Header -->
+<!--   <header class="jumbotron my-4">
+    <h1 class="display-3">A Warm Welcome!</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+    <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+  </header>
+ -->
+  <!-- Page Features -->
+  <div class="row text-center">
+    {% for post in post_list %}
+    <div class="col-md-3 col-lg-4">
+      <div class="card  text-center">
+        <div class="card-heading card-primary ">{{post.title}}</div>
+        <div class="card-block"><img class="img-thumbnail"  src="{{ post.image.url }}" alt="{{ post.title }} image"></div>
+        <div class="card-footer">{{post.description}}<br/>
+            <a href="{{ post.get_absolute_url }}" class="btn btn-primary btn-sm">{{ post.title }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<br>
+<br>
+
+
+{% endblock %}
